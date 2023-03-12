@@ -71,7 +71,7 @@ namespace Lab2
                 if (method.IsVirtual) modificator += "virtual  ";
                 s += $"{modificator}{method.ReturnType.Name}   {method.Name} ()" + "\r" + "\n";
             }
-            output.Text += s;
+            output.Text += s + "\r" + "\n";
         }
 
         private void create_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace Lab2
 
         private void print_field_Click(object sender, EventArgs e)
         {
-            foreach (Control item in change.Parent.Controls)
+            foreach (Control item in print_field.Parent.Controls)
             {
                 if (item.Text == "")
                 {
@@ -166,7 +166,7 @@ namespace Lab2
                 {
                     var f = type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic);
                     var value = f?.GetValue(item);
-                    s += $"{field}:  {value}" + "\r" + "\n";
+                    s += $"{field}:  {value}" + "\r" + "\n" + "\r" + "\n"; ;
                     output.Text += s;
                     break;
                 }
@@ -257,6 +257,7 @@ namespace Lab2
                         {
                             f?.SetValue(item, Double.Parse(value));
                         }
+                        output.Text += $"Поле {field} объекта с ID {id} успешно изменено" + "\r" + "\n" + "\r" + "\n";
                         break;
                     }
                 }
