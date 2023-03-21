@@ -47,7 +47,14 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            _id = AirportList.GetSize();
+            if (AirportList.GetSize() != 0)
+            {
+                _id = AirportList.GetList().Last().GetID() + 1;
+            }
+            else
+            {
+                _id = 0;
+            }
             _count = AirportList.GetSize() + 1;
         }
 
@@ -64,7 +71,14 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            _id = AirportList.GetSize();
+            if (AirportList.GetSize() != 0)
+            {
+                _id = AirportList.GetList().Last().GetID() + 1;
+            }
+            else
+            {
+                _id = 0;
+            }
             _count = AirportList.GetSize() + 1;
         }
 
@@ -82,7 +96,14 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            _id = AirportList.GetSize();
+            if (AirportList.GetSize() != 0)
+            {
+                _id = AirportList.GetList().Last().GetID() + 1;
+            }
+            else
+            {
+                _id = 0;
+            }
             _count = AirportList.GetSize() + 1;
         }
 
@@ -105,7 +126,14 @@ namespace Lab3
             _countOfEmployees = employees;
             _countOfPassengers = passengers;
             _revenue = r;
-            _id = AirportList.GetSize();
+            if (AirportList.GetSize() != 0)
+            {
+                _id = AirportList.GetList().Last().GetID() + 1;
+            }
+            else
+            {
+                _id = 0;
+            }
             _count = AirportList.GetSize() + 1;
         }
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Compare = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Delete = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -72,7 +73,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.obcount = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.Compare = new System.Windows.Forms.Button();
             this.method = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.arcol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listcol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -103,6 +103,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Функционал";
+            // 
+            // Compare
+            // 
+            this.Compare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
+            this.Compare.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Compare.Location = new System.Drawing.Point(277, 65);
+            this.Compare.Name = "Compare";
+            this.Compare.Size = new System.Drawing.Size(212, 35);
+            this.Compare.TabIndex = 10;
+            this.Compare.Text = "Сравнить List и Array";
+            this.Compare.UseVisualStyleBackColor = false;
+            this.Compare.Click += new System.EventHandler(this.Compare_Click);
             // 
             // groupBox6
             // 
@@ -513,8 +525,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.BackColor = System.Drawing.Color.White;
             this.groupBox5.Controls.Add(this.output);
@@ -578,18 +589,6 @@
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // Compare
-            // 
-            this.Compare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
-            this.Compare.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Compare.Location = new System.Drawing.Point(277, 65);
-            this.Compare.Name = "Compare";
-            this.Compare.Size = new System.Drawing.Size(212, 35);
-            this.Compare.TabIndex = 10;
-            this.Compare.Text = "Сравнить List и Array";
-            this.Compare.UseVisualStyleBackColor = false;
-            this.Compare.Click += new System.EventHandler(this.Compare_Click);
             // 
             // method
             // 

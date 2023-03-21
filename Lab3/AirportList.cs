@@ -41,7 +41,7 @@ namespace Lab3
         }
 
         /// <summary>
-        /// Метод добавления объекта в список
+        /// Метод удаления объекта из списка
         /// </summary>
         /// <param name="i"> ID объекта </param>
         public static void Remove(int i)
@@ -57,6 +57,7 @@ namespace Lab3
             }
         }
 
+        /// <summary> Метод получения списка </summary>
         public static List<Airport> GetList()
         {
             return _list;
