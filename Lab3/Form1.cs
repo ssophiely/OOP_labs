@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 using System.Collections;
+using System.Diagnostics;
 
 namespace Lab3
 {
@@ -302,6 +303,52 @@ namespace Lab3
             }
             obcount.Text = AirportList.GetSize().ToString();
             rid.Text = "";
+        }
+
+        private void Compare_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            Comparing comparing = new Comparing();
+            Stopwatch timer = new Stopwatch();
+            ListViewItem item1 = new ListViewItem("Добавление");
+
+            timer.Start();
+            comparing.Array_add();
+            timer.Stop();
+            item1.SubItems.Add(timer.Elapsed.ToString());
+
+            timer.Start();
+            comparing.List_add();
+            timer.Stop();
+            item1.SubItems.Add(timer.Elapsed.ToString());
+
+            listView1.Items.Add(item1);
+            ListViewItem item2 = new ListViewItem("Последовательная выборка");
+
+            timer.Start();
+            comparing.List_remove_in_order();
+            timer.Stop();
+            item2.SubItems.Add(timer.Elapsed.ToString());
+
+            timer.Start();
+            comparing.Array_remove_in_order();
+            timer.Stop();
+            item2.SubItems.Add(timer.Elapsed.ToString());
+
+            listView1.Items.Add(item2);
+            ListViewItem item3 = new ListViewItem("Рандомная выборка");
+
+            timer.Start();
+            comparing.List_remove_random();
+            timer.Stop();
+            item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
+
+            timer.Start();
+            comparing.Array_remove_random();
+            timer.Stop();
+            item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
+
+            listView1.Items.Add(item3);
         }
     }
 }

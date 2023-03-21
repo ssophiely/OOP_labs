@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Delete = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.rid = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.revenue = new System.Windows.Forms.TextBox();
@@ -67,21 +71,24 @@
             this.output = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.obcount = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.Delete = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.rid = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.Compare = new System.Windows.Forms.Button();
+            this.method = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.arcol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listcol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.Compare);
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -97,8 +104,54 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Функционал";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.AliceBlue;
+            this.groupBox6.Controls.Add(this.Delete);
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.rid);
+            this.groupBox6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox6.Location = new System.Drawing.Point(5, 316);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(485, 75);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Удаление объекта";
+            // 
+            // Delete
+            // 
+            this.Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
+            this.Delete.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.Location = new System.Drawing.Point(380, 34);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(85, 35);
+            this.Delete.TabIndex = 5;
+            this.Delete.Text = "Удалить";
+            this.Delete.UseVisualStyleBackColor = false;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(15, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(79, 17);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "ID объекта";
+            // 
+            // rid
+            // 
+            this.rid.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rid.Location = new System.Drawing.Point(7, 42);
+            this.rid.Name = "rid";
+            this.rid.Size = new System.Drawing.Size(100, 25);
+            this.rid.TabIndex = 0;
+            // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.BackColor = System.Drawing.Color.AliceBlue;
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.revenue);
@@ -447,6 +500,7 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(155)))), ((int)(((byte)(176)))));
             this.button3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(883, 711);
@@ -459,24 +513,29 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.BackColor = System.Drawing.Color.White;
             this.groupBox5.Controls.Add(this.output);
             this.groupBox5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox5.Location = new System.Drawing.Point(514, 77);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(581, 326);
+            this.groupBox5.Size = new System.Drawing.Size(581, 512);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Окно вывода";
             // 
             // output
             // 
+            this.output.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.output.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.output.Location = new System.Drawing.Point(6, 24);
             this.output.Multiline = true;
             this.output.Name = "output";
             this.output.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.output.Size = new System.Drawing.Size(569, 294);
+            this.output.Size = new System.Drawing.Size(569, 480);
             this.output.TabIndex = 0;
             // 
             // label13
@@ -491,6 +550,7 @@
             // 
             // obcount
             // 
+            this.obcount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.obcount.BackColor = System.Drawing.Color.White;
             this.obcount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.obcount.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -500,58 +560,53 @@
             this.obcount.TabIndex = 4;
             this.obcount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox6.Controls.Add(this.Delete);
-            this.groupBox6.Controls.Add(this.label15);
-            this.groupBox6.Controls.Add(this.rid);
-            this.groupBox6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox6.Location = new System.Drawing.Point(5, 316);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(485, 75);
-            this.groupBox6.TabIndex = 9;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Удаление объекта";
-            // 
-            // Delete
-            // 
-            this.Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
-            this.Delete.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Delete.Location = new System.Drawing.Point(380, 34);
-            this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(85, 35);
-            this.Delete.TabIndex = 5;
-            this.Delete.Text = "Удалить";
-            this.Delete.UseVisualStyleBackColor = false;
-            this.Delete.Click += new System.EventHandler(this.Delete_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(15, 22);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(79, 17);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "ID объекта";
-            // 
-            // rid
-            // 
-            this.rid.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rid.Location = new System.Drawing.Point(7, 42);
-            this.rid.Name = "rid";
-            this.rid.Size = new System.Drawing.Size(100, 25);
-            this.rid.TabIndex = 0;
-            // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.method,
+            this.arcol,
+            this.listcol});
+            this.listView1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listView1.ForeColor = System.Drawing.Color.Black;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(514, 429);
+            this.listView1.Location = new System.Drawing.Point(514, 602);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(581, 272);
+            this.listView1.Size = new System.Drawing.Size(581, 99);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // Compare
+            // 
+            this.Compare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
+            this.Compare.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Compare.Location = new System.Drawing.Point(277, 65);
+            this.Compare.Name = "Compare";
+            this.Compare.Size = new System.Drawing.Size(212, 35);
+            this.Compare.TabIndex = 10;
+            this.Compare.Text = "Сравнить List и Array";
+            this.Compare.UseVisualStyleBackColor = false;
+            this.Compare.Click += new System.EventHandler(this.Compare_Click);
+            // 
+            // method
+            // 
+            this.method.Text = "Метод";
+            this.method.Width = 233;
+            // 
+            // arcol
+            // 
+            this.arcol.Text = "Array";
+            this.arcol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.arcol.Width = 170;
+            // 
+            // listcol
+            // 
+            this.listcol.Text = "List";
+            this.listcol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.listcol.Width = 170;
             // 
             // Airport1
             // 
@@ -570,6 +625,8 @@
             this.Text = "Аэропорт";
             this.Load += new System.EventHandler(this.Airport1_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -578,8 +635,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,6 +686,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox rid;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button Compare;
+        private System.Windows.Forms.ColumnHeader method;
+        private System.Windows.Forms.ColumnHeader arcol;
+        private System.Windows.Forms.ColumnHeader listcol;
     }
 }
 
