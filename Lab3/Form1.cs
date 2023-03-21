@@ -326,12 +326,12 @@ namespace Lab3
             ListViewItem item2 = new ListViewItem("Последовательная выборка");
 
             timer.Start();
-            comparing.List_remove_in_order();
+            comparing.List_select_in_order();
             timer.Stop();
             item2.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
 
             timer.Start();
-            comparing.Array_remove_in_order();
+            comparing.Array_select_in_order();
             timer.Stop();
             item2.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
 
@@ -339,12 +339,12 @@ namespace Lab3
             ListViewItem item3 = new ListViewItem("Рандомная выборка");
 
             timer.Start();
-            comparing.List_remove_random();
+            comparing.List_select_random();
             timer.Stop();
             item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
 
             timer.Start();
-            comparing.Array_remove_random();
+            comparing.Array_select_random();
             timer.Stop();
             item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
 
