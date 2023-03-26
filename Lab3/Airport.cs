@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,9 @@ namespace Lab3
         /// <summary> id объекта </summary>
         private readonly int _id;
 
+        /// <summary> Список объектов класса Airport </summary>
+        private static List<Airport> _airports = new List<Airport>();
+
         /// <summary>
         /// конструктор без параметров
         /// </summary>
@@ -47,15 +51,8 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            if (AirportList.GetSize() != 0)
-            {
-                _id = AirportList.GetList().Last().GetID() + 1;
-            }
-            else
-            {
-                _id = 0;
-            }
-            _count = AirportList.GetSize() + 1;
+            _id = _airports.Count;
+            _count = _airports.Count + 1;
         }
 
         /// <summary>
@@ -71,15 +68,8 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            if (AirportList.GetSize() != 0)
-            {
-                _id = AirportList.GetList().Last().GetID() + 1;
-            }
-            else
-            {
-                _id = 0;
-            }
-            _count = AirportList.GetSize() + 1;
+            _id = _airports.Count;
+            _count = _airports.Count + 1;
         }
 
         /// <summary>
@@ -96,15 +86,8 @@ namespace Lab3
             _countOfEmployees = 0;
             _countOfPassengers = 0F;
             _revenue = 0D;
-            if (AirportList.GetSize() != 0)
-            {
-                _id = AirportList.GetList().Last().GetID() + 1;
-            }
-            else
-            {
-                _id = 0;
-            }
-            _count = AirportList.GetSize() + 1;
+            _id = _airports.Count;
+            _count = _airports.Count + 1;
         }
 
         /// <summary>
@@ -126,15 +109,8 @@ namespace Lab3
             _countOfEmployees = employees;
             _countOfPassengers = passengers;
             _revenue = r;
-            if (AirportList.GetSize() != 0)
-            {
-                _id = AirportList.GetList().Last().GetID() + 1;
-            }
-            else
-            {
-                _id = 0;
-            }
-            _count = AirportList.GetSize() + 1;
+            _id = _airports.Count;
+            _count = _airports.Count + 1;
         }
 
         /// <summary>
@@ -359,5 +335,21 @@ namespace Lab3
             return Convert.ToString(_countOfAirplanes, 16);
         }
 
+        /// <summary>
+        /// Добавление объекта в список
+        /// </summary>
+        public void List_push()
+        {
+            _airports.Add(this);
+        }
+
+        /// <summary>
+        /// Геттер списка объектов
+        /// </summary>
+        /// <returns> Список объектов класса Airport
+        static public List<Airport> GetList()
+        {
+            return _airports;
+        }
     }
 }

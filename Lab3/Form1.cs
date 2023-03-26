@@ -17,11 +17,12 @@ namespace Lab3
 {
     public partial class Airport1 : Form
     {
+        private AirportList list1 = new AirportList();
         public Airport1()
         {
             InitializeComponent();
-            AirportList.AddChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
-            AirportList.DelChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
+            list1.AddChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
+            list1.DelChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -40,7 +41,7 @@ namespace Lab3
 
         private void PrintObj_Click(object sender, EventArgs e)
         {
-            foreach (Airport item in AirportList.GetList())
+            foreach (Airport item in Airport.GetList())
             {
                 string s = item.ToString();
                 output.Text += s + "\r" + "\n" + "\r" + "\n";
@@ -98,8 +99,10 @@ namespace Lab3
                 float passengers1 = float.Parse(passengers.Text);
                 double revenue1 = Double.Parse(revenue.Text);
 
-                AirportList.Add(new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1));
-                obcount.Text = AirportList.GetSize().ToString();
+                Airport a = new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1);
+                a.List_push();
+                list1.Add(a);
+                obcount.Text = Airport.GetCount().ToString();
 
             }
             catch (FormatException ex)
@@ -164,7 +167,7 @@ namespace Lab3
             }
 
             string s = "";
-            foreach (Airport item in AirportList.GetList())
+            foreach (Airport item in Airport.GetList())
             {
                 if (item.GetID().ToString() == id)
                 {
@@ -237,7 +240,7 @@ namespace Lab3
                 return;
             }
 
-            foreach (Airport item in AirportList.GetList())
+            foreach (Airport item in Airport.GetList())
             {
                 try
                 {
@@ -292,7 +295,7 @@ namespace Lab3
 
             try
             {
-                AirportList.Remove((Int32.Parse(id)));
+                list1.Remove((Int32.Parse(id)));
             }
             catch (FormatException ex)
             {
@@ -301,7 +304,6 @@ namespace Lab3
                 MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
                 return;
             }
-            obcount.Text = AirportList.GetSize().ToString();
             rid.Text = "";
         }
 

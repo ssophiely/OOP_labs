@@ -10,22 +10,22 @@ namespace Lab3
     public class AirportList
     {
         /// <summary> Список объектов класса Airport </summary>
-        private static List<Airport> _list = new List<Airport>();
-
-        /// <summary> приватный конструктор </summary>
-        private AirportList() { }
+        private List<Airport> _list = new List<Airport>();
 
         /// <summary> Пользовательский делегат </summary>
         public delegate void AirportListHandler(string message);
 
         /// <summary> Событие добавления объекта в список </summary>
-        public static event AirportListHandler AddChange;
+        public event AirportListHandler AddChange;
 
         /// <summary> Событие удаления объекта из списка </summary>
-        public static event AirportListHandler DelChange;
+        public event AirportListHandler DelChange;
+
+        /// <summary> конструктор </summary>
+        public AirportList() { }
 
         /// <summary> Метод получения длины списка </summary>
-        public static int GetSize()
+        public int GetSize()
         {
             return _list.Count;
         }
@@ -34,31 +34,31 @@ namespace Lab3
         /// Метод добавления объекта в список
         /// </summary>
         /// <param name="item"> объект класса Airport </param>
-        public static void Add(Airport item)
+        public void Add(Airport item)
         {
             _list.Add(item);
-            AddChange.Invoke($"Объект с ID {item.GetID()} успешно создан");
+            AddChange.Invoke($"Объект с ID {item.GetID()} успешно добавлен в коллекцию");
         }
 
         /// <summary>
         /// Метод удаления объекта из списка
         /// </summary>
         /// <param name="i"> ID объекта </param>
-        public static void Remove(int i)
+        public void Remove(int i)
         {
             if (i < _list.Count)
             {
                 _list.RemoveAt(i);
-                DelChange.Invoke($"Объект с ID {i} успешно удален");
+                DelChange.Invoke($"Объект с ID {i} успешно удален из коллекции");
             }
             else
             {
-                DelChange.Invoke($"Объекта с ID {i} не существует");
+                DelChange.Invoke($"Объекта с ID {i} нет в коллекции");
             }
         }
 
         /// <summary> Метод получения списка </summary>
-        public static List<Airport> GetList()
+        public List<Airport> GetList()
         {
             return _list;
         }
