@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Lab4
 {
-    public class Airport
+    public class Airport : IComparable
     {
         /// <summary> название аэропорта </summary>
         private string _name;
@@ -350,6 +351,13 @@ namespace Lab4
         static public List<Airport> GetList()
         {
             return _airports;
+        }
+
+
+        public int CompareTo(object o)
+        {
+            if (o is Airport air) return _name.CompareTo(air._name);
+            else throw new ArgumentException("Некорректное значение параметра");
         }
     }
 }

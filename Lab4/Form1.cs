@@ -12,17 +12,42 @@ using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 using System.Collections;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace Lab4
 {
     public partial class Airport1 : Form
     {
-        private AirportList list1 = new AirportList();
+        private CollectionType<Airport>[] array;
         public Airport1()
         {
             InitializeComponent();
-            list1.AddChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
-            list1.DelChange += new AirportList.AirportListHandler((m) => output.Text += m + "\r" + "\n" + "\r" + "\n");
+
+            CollectionType<Airport> collection1 = new CollectionType<Airport>();
+            CollectionType<Airport> collection2 = new CollectionType<Airport>();
+            CollectionType<Airport> collection3 = new CollectionType<Airport>();
+
+            Airport dmd = new Airport("Домодедово", "DME", 5000, 500, 1000, 30.6f, 10.3);
+            dmd.List_push();
+            Airport shmt = new Airport("Шереметьево", "SVO", 5000, 500, 1000, 24.0f, 12.2);
+            shmt.List_push();
+            Airport dubai = new Airport("Дубай", "DXB", 30000, 800, 6000, 89.7f, 78.8);
+            dubai.List_push();
+            Airport la = new Airport("Лос-Анджелес", "LAX", 23000, 600, 4000, 24.7f, 50.8);
+            la.List_push();
+            Airport atl = new Airport("Атланта", "ATL", 12000, 400, 1000, 40.0f, 15.8);
+            atl.List_push();
+
+            collection1.Add(dmd);
+            collection1.Add(shmt);
+            collection2.Add(la);
+            collection2.Add(atl);
+            collection2.Add(dubai);
+            collection3.Add(dubai);
+
+            array = new[] { collection1, collection2, collection3 };
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
@@ -37,15 +62,6 @@ namespace Lab4
         private void OutputClear_Click(object sender, EventArgs e)
         {
             output.Clear();
-        }
-
-        private void PrintObj_Click(object sender, EventArgs e)
-        {
-            foreach (Airport item in Airport.GetList())
-            {
-                string s = item.ToString();
-                output.Text += s + "\r" + "\n" + "\r" + "\n";
-            }
         }
 
         private void output_class_Click(object sender, EventArgs e)
@@ -78,279 +94,136 @@ namespace Lab4
             output.Text += s + "\r" + "\n";
         }
 
-        // Создать объект
-        private void create_Click(object sender, EventArgs e)
-        {
-            foreach (Control item in create.Parent.Controls)
-            {
-                if (item.Text == "")
-                {
-                    MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
-                    return;
-                }
-            }
-            try
-            {
-                string name1 = name.Text;
-                string code1 = code.Text;
-                int flights1 = Int32.Parse(flights.Text);
-                int planes1 = Int32.Parse(planes.Text);
-                int people1 = Int32.Parse(people.Text);
-                float passengers1 = float.Parse(passengers.Text);
-                double revenue1 = Double.Parse(revenue.Text);
+        //// Создать объект
+        //private void create_Click(object sender, EventArgs e)
+        //{
+        //    foreach (Control item in create.Parent.Controls)
+        //    {
+        //        if (item.Text == "")
+        //        {
+        //            MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
+        //            return;
+        //        }
+        //    }
+        //    try
+        //    {
+        //        string name1 = name.Text;
+        //        string code1 = code.Text;
+        //        int flights1 = Int32.Parse(flights.Text);
+        //        int planes1 = Int32.Parse(planes.Text);
+        //        int people1 = Int32.Parse(people.Text);
+        //        float passengers1 = float.Parse(passengers.Text);
+        //        double revenue1 = Double.Parse(revenue.Text);
 
-                Airport a = new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1);
-                a.List_push();
-                list1.Add(a);
-                obcount.Text = Airport.GetCount().ToString();
+        //        Airport a = new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1);
+        //        a.List_push();
+        //        list1.Add(a);
+        //        obcount.Text = Airport.GetCount().ToString();
 
-            }
-            catch (FormatException ex)
-            {
-                InvalidConvertingException ex1 = new InvalidConvertingException("Невозможно преобразовать " +
-                    "введенные данные к типу ", ex.TargetSite.Name);
-                MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-                return;
-            }
-            foreach (Control item in create.Parent.Controls)
-            {
-                if (item.GetType().Name == "TextBox")
-                {
-                    item.Text = "";
-                }
-            }
-        }
+        //    }
+        //    catch (FormatException ex)
+        //    {
+        //        InvalidConvertingException ex1 = new InvalidConvertingException("Невозможно преобразовать " +
+        //            "введенные данные к типу ", ex.TargetSite.Name);
+        //        MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
+        //        return;
+        //    }
+        //    foreach (Control item in create.Parent.Controls)
+        //    {
+        //        if (item.GetType().Name == "TextBox")
+        //        {
+        //            item.Text = "";
+        //        }
+        //    }
+        //}
 
         private void Airport1_Load(object sender, EventArgs e)
         {
-            obcount.Text = Airport.GetCount().ToString();
         }
 
-        private void print_field_Click(object sender, EventArgs e)
+        //private void Delete_Click(object sender, EventArgs e)
+        //{
+        //    if (rid.Text == "")
+        //    {
+        //        MessageBox(0, "Заполните поле ID объекта", "Найдено пустое поле", 0);
+        //    }
+        //    string id = rid.Text;
+
+        //    try
+        //    {
+        //        list1.Remove((Int32.Parse(id)));
+        //    }
+        //    catch (FormatException ex)
+        //    {
+        //        InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
+        //            $"{id} к типу ", ex.TargetSite.Name);
+        //        MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
+        //        return;
+        //    }
+        //    rid.Text = "";
+        //}
+
+        private void arr_print_Click(object sender, EventArgs e)
         {
-            foreach (Control item in print_field.Parent.Controls)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (item.Text == "")
+                string s = $"Array[{i}]:" + "\r" + "\n";
+                foreach (Airport item in array[i])
                 {
-                    MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
-                    return;
+                    s += item.ToString() + "\r" + "\n" + "\r" + "\n";
                 }
-            }
-            string id = id2.Text;
-            string field = field2.Text;
-
-            Type type = typeof(Airport);
-
-            try
-            {
-                if (Int32.Parse(id) >= Airport.GetCount())
-                {
-                    MessageBox(0, $"Объект с ID {id} не найден", "Неверный ID объекта", 0);
-                    return;
-                }
-                if (type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic) == null)
-                {
-                    throw new UnidentifiedFieldException($"Поля {field} не существует в контескте класса Airport");
-                }
-            }
-            catch (FormatException ex)
-            {
-                InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
-                    $"{id} к типу ", ex.TargetSite.Name);
-                MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-                return;
-            }
-            catch (UnidentifiedFieldException ex)
-            {
-                MessageBox(0, ex.Message, "Неизвестное поле класса", 0);
-                return;
-            }
-
-            string s = "";
-            foreach (Airport item in Airport.GetList())
-            {
-                if (item.GetID().ToString() == id)
-                {
-                    var f = type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic);
-                    var value = f?.GetValue(item);
-                    s += $"{field}:  {value}" + "\r" + "\n" + "\r" + "\n"; ;
-                    output.Text += s;
-                    break;
-                }
-            }
-            foreach (Control item in print_field.Parent.Controls)
-            {
-                if (item.GetType().Name == "TextBox")
-                {
-                    item.Text = "";
-                }
+                output.Text += s + "\r" + "\n" + "\r" + "\n";
             }
         }
 
-        private void change_Click(object sender, EventArgs e)
+        private void arr_sort_Click(object sender, EventArgs e)
         {
-            foreach (Control item in change.Parent.Controls)
+            foreach (CollectionType<Airport> item in array)
             {
-                if (item.Text == "")
-                {
-                    MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
-                    return;
-                }
-            }
-            string id = id1.Text;
-            string field = field1.Text;
-            string value = value1.Text;
-
-            Type type = typeof(Airport);
-
-            try
-            {
-                if (Int32.Parse(id) >= Airport.GetCount())
-                {
-                    MessageBox(0, $"Объект с ID {id} не найден", "Неверный ID объекта", 0);
-                    return;
-                }
-                if (type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static) == null)
-                {
-                    throw new UnidentifiedFieldException($"Поля {field} не существует в контескте класса Airport");
-                }
-            }
-            catch (FormatException ex)
-            {
-                InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
-                    $"{id} к типу ", ex.TargetSite.Name);
-                MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-                return;
-            }
-            catch (UnidentifiedFieldException ex)
-            {
-                MessageBox(0, ex.Message, "Неизвестное поле класса", 0);
-                return;
-            }
-
-            if (field == "_id")
-            {
-                MessageBox(0, "Невозможно изменить значение поля ID", "Изменение невозможно", 0);
-                return;
-            }
-
-            if (type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static).IsStatic)
-            {
-                MessageBox(0, "Невозможно изменить значение статического поля класса", "Изменение невозможно", 0);
-                return;
-            }
-
-            foreach (Airport item in Airport.GetList())
-            {
-                try
-                {
-                    if (item.GetID().ToString() == id)
-                    {
-                        var f = type.GetField(field, BindingFlags.Instance | BindingFlags.NonPublic);
-                        string n = f.FieldType.Name;
-                        if (n == "Int32")
-                        {
-                            f?.SetValue(item, Int32.Parse(value));
-                        }
-                        else if (n == "String")
-                        {
-                            f?.SetValue(item, value);
-                        }
-                        else if (n == "Single")
-                        {
-                            f?.SetValue(item, float.Parse(value));
-                        }
-                        else if (n == "Double")
-                        {
-                            f?.SetValue(item, Double.Parse(value));
-                        }
-                        output.Text += $"Поле {field} объекта с ID {id} успешно изменено" + "\r" + "\n" + "\r" + "\n";
-                        break;
-                    }
-                }
-                catch (FormatException ex)
-                {
-                    InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
-                        $"{value} к типу ", ex.TargetSite.Name);
-                    MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-                    return;
-                }
-            }
-            foreach (Control item in change.Parent.Controls)
-            {
-                if (item.GetType().Name == "TextBox")
-                {
-                    item.Text = "";
-                }
+                item._list.Sort();
             }
         }
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            if (rid.Text == "")
-            {
-                MessageBox(0, "Заполните поле ID объекта", "Найдено пустое поле", 0);
-            }
-            string id = rid.Text;
+            int arr_ind = (int)delm.Value;
+            int col_ind = (int)delc.Value;
 
-            try
+            if (arr_ind >= array.Length)
             {
-                list1.Remove((Int32.Parse(id)));
-            }
-            catch (FormatException ex)
-            {
-                InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
-                    $"{id} к типу ", ex.TargetSite.Name);
-                MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
+                MessageBox(0, "Индекс за пределами массива", "Ошибка", 0);
                 return;
             }
-            rid.Text = "";
+            if (col_ind >= array[arr_ind]._size)
+            {
+                MessageBox(0, "Индекс за пределами коллекции", "Ошибка", 0);
+                return;
+            }
+
+            array[arr_ind].Remove(col_ind);
         }
 
-        private void Compare_Click(object sender, EventArgs e)
+        private async void file_save_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
-            Comparing comparing = new Comparing();
-            Stopwatch timer = new Stopwatch();
-            ListViewItem item1 = new ListViewItem("Добавление");
+            string s = "";
+            for (int i = 0; i < array.Length; i++)
+            {
+                s += $"Array[{i}]:" + "\r" + "\n";
+                foreach (Airport item in array[i])
+                {
+                    s += item.ToString() + "\r" + "\n" + "\r" + "\n";
+                }
+                s += "\r" + "\n" + "\r" + "\n";
+            }
+            using (StreamWriter writer = new StreamWriter("airports.txt", false))
+            {
+                await writer.WriteLineAsync(s);
+            }
+        }
 
-            timer.Start();
-            comparing.Array_add();
-            timer.Stop();
-            item1.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
+        private void create_Click(object sender, EventArgs e)
+        {
 
-            timer.Start();
-            comparing.List_add();
-            timer.Stop();
-            item1.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
-
-            listView1.Items.Add(item1);
-            ListViewItem item2 = new ListViewItem("Последовательная выборка");
-
-            timer.Start();
-            comparing.List_select_in_order();
-            timer.Stop();
-            item2.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
-
-            timer.Start();
-            comparing.Array_select_in_order();
-            timer.Stop();
-            item2.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
-
-            listView1.Items.Add(item2);
-            ListViewItem item3 = new ListViewItem("Рандомная выборка");
-
-            timer.Start();
-            comparing.List_select_random();
-            timer.Stop();
-            item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
-
-            timer.Start();
-            comparing.Array_select_random();
-            timer.Stop();
-            item3.SubItems.Add(timer.Elapsed.TotalMilliseconds.ToString());
-
-            listView1.Items.Add(item3);
         }
     }
 }
