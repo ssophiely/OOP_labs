@@ -64,36 +64,6 @@ namespace Lab4
             output.Clear();
         }
 
-        private void output_class_Click(object sender, EventArgs e)
-        {
-            Type type = typeof(Airport);
-            string s = "Поля:" + "\r" + "\n";
-
-            foreach (FieldInfo field in type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic
-                | BindingFlags.Public | BindingFlags.Static))
-            {
-                string modificator = "";
-                if (field.IsPublic)
-                    modificator += "public  ";
-                else if (field.IsPrivate)
-                    modificator += "private  ";
-                if (field.IsStatic) modificator += "static  ";
-
-                s += $"{modificator}{field.FieldType.Name}   {field.Name}" + "\r" + "\n"; ;
-            }
-
-            s += "\r" + "\n" + "Методы:" + "\r" + "\n";
-
-            foreach (MethodInfo method in type.GetMethods())
-            {
-                string modificator = "";
-                if (method.IsStatic) modificator += "static  ";
-                if (method.IsVirtual) modificator += "virtual  ";
-                s += $"{modificator}{method.ReturnType.Name}   {method.Name} ()" + "\r" + "\n";
-            }
-            output.Text += s + "\r" + "\n";
-        }
-
         private void Airport1_Load(object sender, EventArgs e)
         {
         }

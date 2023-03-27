@@ -60,7 +60,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.arr_print = new System.Windows.Forms.Button();
             this.arr_sort = new System.Windows.Forms.Button();
-            this.output_class = new System.Windows.Forms.Button();
             this.OutputClear = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -421,18 +420,6 @@
             this.arr_sort.UseVisualStyleBackColor = false;
             this.arr_sort.Click += new System.EventHandler(this.arr_sort_Click);
             // 
-            // output_class
-            // 
-            this.output_class.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
-            this.output_class.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.output_class.Location = new System.Drawing.Point(19, 19);
-            this.output_class.Name = "output_class";
-            this.output_class.Size = new System.Drawing.Size(212, 35);
-            this.output_class.TabIndex = 4;
-            this.output_class.Text = "Вывести содержимое класса";
-            this.output_class.UseVisualStyleBackColor = false;
-            this.output_class.Click += new System.EventHandler(this.output_class_Click);
-            // 
             // OutputClear
             // 
             this.OutputClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
@@ -487,9 +474,9 @@
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackColor = System.Drawing.Color.YellowGreen;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
             this.button6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(520, 707);
+            this.button6.Location = new System.Drawing.Point(18, 19);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(212, 35);
             this.button6.TabIndex = 5;
@@ -503,7 +490,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1102, 764);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.output_class);
             this.Controls.Add(this.OutputClear);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button3);
@@ -531,7 +517,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button output_class;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button OutputClear;
