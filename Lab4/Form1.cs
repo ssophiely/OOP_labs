@@ -94,74 +94,9 @@ namespace Lab4
             output.Text += s + "\r" + "\n";
         }
 
-        //// Создать объект
-        //private void create_Click(object sender, EventArgs e)
-        //{
-        //    foreach (Control item in create.Parent.Controls)
-        //    {
-        //        if (item.Text == "")
-        //        {
-        //            MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
-        //            return;
-        //        }
-        //    }
-        //    try
-        //    {
-        //        string name1 = name.Text;
-        //        string code1 = code.Text;
-        //        int flights1 = Int32.Parse(flights.Text);
-        //        int planes1 = Int32.Parse(planes.Text);
-        //        int people1 = Int32.Parse(people.Text);
-        //        float passengers1 = float.Parse(passengers.Text);
-        //        double revenue1 = Double.Parse(revenue.Text);
-
-        //        Airport a = new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1);
-        //        a.List_push();
-        //        list1.Add(a);
-        //        obcount.Text = Airport.GetCount().ToString();
-
-        //    }
-        //    catch (FormatException ex)
-        //    {
-        //        InvalidConvertingException ex1 = new InvalidConvertingException("Невозможно преобразовать " +
-        //            "введенные данные к типу ", ex.TargetSite.Name);
-        //        MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-        //        return;
-        //    }
-        //    foreach (Control item in create.Parent.Controls)
-        //    {
-        //        if (item.GetType().Name == "TextBox")
-        //        {
-        //            item.Text = "";
-        //        }
-        //    }
-        //}
-
         private void Airport1_Load(object sender, EventArgs e)
         {
         }
-
-        //private void Delete_Click(object sender, EventArgs e)
-        //{
-        //    if (rid.Text == "")
-        //    {
-        //        MessageBox(0, "Заполните поле ID объекта", "Найдено пустое поле", 0);
-        //    }
-        //    string id = rid.Text;
-
-        //    try
-        //    {
-        //        list1.Remove((Int32.Parse(id)));
-        //    }
-        //    catch (FormatException ex)
-        //    {
-        //        InvalidConvertingException ex1 = new InvalidConvertingException($"Невозможно преобразовать " +
-        //            $"{id} к типу ", ex.TargetSite.Name);
-        //        MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
-        //        return;
-        //    }
-        //    rid.Text = "";
-        //}
 
         private void arr_print_Click(object sender, EventArgs e)
         {
@@ -223,7 +158,89 @@ namespace Lab4
 
         private void create_Click(object sender, EventArgs e)
         {
+            foreach (Control item in create.Parent.Controls)
+            {
+                if (item.Text == "")
+                {
+                    MessageBox(0, "Заполните все поля", "Найдено пустое поле", 0);
+                    return;
+                }
+            }
+            try
+            {
+                string name1 = name.Text;
+                string code1 = code.Text;
+                int flights1 = Int32.Parse(flights.Text);
+                int planes1 = Int32.Parse(planes.Text);
+                int people1 = Int32.Parse(people.Text);
+                float passengers1 = float.Parse(passengers.Text);
+                double revenue1 = Double.Parse(revenue.Text);
 
+                int arr_ind = (int)addm.Value;
+                if (arr_ind >= array.Length)
+                {
+                    MessageBox(0, "Индекс за пределами массива", "Ошибка", 0);
+                    return;
+                }
+
+                Airport a = new Airport(name1, code1, flights1, planes1, people1, passengers1, revenue1);
+                a.List_push();
+                array[arr_ind].Add(a);
+            }
+            catch (FormatException ex)
+            {
+                InvalidConvertingException ex1 = new InvalidConvertingException("Невозможно преобразовать " +
+                    "введенные данные к типу ", ex.TargetSite.Name);
+                MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
+                return;
+            }
+            foreach (Control item in create.Parent.Controls)
+            {
+                if (item.GetType().Name == "TextBox")
+                {
+                    item.Text = "";
+                }
+            }
+        }
+
+        private void find_Click(object sender, EventArgs e)
+        {
+            if (airname.Text == "")
+            {
+                MessageBox(0, "Заполните поле", "Найдено пустое поле", 0);
+                return;
+            }
+            string name = airname.Text;
+
+            int count = (from item in array where item._list.Any(x => x.GetName() == name) select item).Count();
+            var mas = array.Where(item => item._list.Any(x => x.GetName() == name)).OrderBy(item => item);
+            var max = (from item in array where item._list.Any(x => x.GetName() == name) select item).Max();
+
+            if (count == 0)
+            {
+                output.Text += $"Коллекций, содержащих объекты с названием {name} нет" + "\r" + "\n" + "\r" + "\n";
+                return;
+            }
+            output.Text += $"Количество коллекций, содержащих объекты с названием {name}:  {count}" + "\r" + "\n";
+            output.Text += $"Коллекции, содержащие объекты с названием {name}:" + "\r" + "\n";
+            string s = "";
+            for (int i = 0; i < mas.Count(); i++)
+            {
+                s = $"Collection{i+1}:" + "\r" + "\n";
+                foreach (Airport item in array[i])
+                {
+                    s += item.ToString() + "\r" + "\n" + "\r" + "\n";
+                }
+                output.Text += s + "\r" + "\n" + "\r" + "\n";
+            }
+
+            output.Text += $"Максимальная коллекция, содержащая объекты с названием {name}:" + "\r" + "\n";
+            s = "";
+            foreach (Airport item in max)
+            {
+                s += item.ToString() + "\r" + "\n" + "\r" + "\n";
+            }
+            output.Text += s;
         }
     }
 }

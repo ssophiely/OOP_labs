@@ -36,11 +36,9 @@
             this.Delete = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.revenue = new System.Windows.Forms.TextBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.addm = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.passengers = new System.Windows.Forms.TextBox();
@@ -57,8 +55,8 @@
             this.name = new System.Windows.Forms.TextBox();
             this.file_save = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.find = new System.Windows.Forms.Button();
+            this.airname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.arr_print = new System.Windows.Forms.Button();
             this.arr_sort = new System.Windows.Forms.Button();
@@ -73,8 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.delc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.delm)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addm)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
@@ -164,11 +161,9 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox4.Controls.Add(this.numericUpDown3);
             this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.revenue);
-            this.groupBox4.Controls.Add(this.numericUpDown4);
+            this.groupBox4.Controls.Add(this.addm);
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.passengers);
@@ -191,13 +186,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Добавление нового объекта";
             // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Location = new System.Drawing.Point(177, 321);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(117, 25);
-            this.numericUpDown3.TabIndex = 12;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -208,16 +196,6 @@
             this.label12.TabIndex = 19;
             this.label12.Text = "Доход за последний год (млрд руб)";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(174, 301);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Индекс в коллекции";
-            // 
             // revenue
             // 
             this.revenue.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -226,12 +204,12 @@
             this.revenue.Size = new System.Drawing.Size(206, 25);
             this.revenue.TabIndex = 18;
             // 
-            // numericUpDown4
+            // addm
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(14, 321);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(117, 25);
-            this.numericUpDown4.TabIndex = 10;
+            this.addm.Location = new System.Drawing.Point(14, 321);
+            this.addm.Name = "addm";
+            this.addm.Size = new System.Drawing.Size(117, 25);
+            this.addm.TabIndex = 10;
             // 
             // label5
             // 
@@ -378,8 +356,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.AliceBlue;
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.find);
+            this.groupBox2.Controls.Add(this.airname);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(7, 106);
@@ -389,24 +367,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "LINQ-запросы";
             // 
-            // button5
+            // find
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(350, 22);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(127, 35);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "Найти коллекции";
-            this.button5.UseVisualStyleBackColor = false;
+            this.find.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(196)))), ((int)(((byte)(234)))));
+            this.find.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.find.Location = new System.Drawing.Point(350, 22);
+            this.find.Name = "find";
+            this.find.Size = new System.Drawing.Size(127, 35);
+            this.find.TabIndex = 15;
+            this.find.Text = "Найти коллекции";
+            this.find.UseVisualStyleBackColor = false;
+            this.find.Click += new System.EventHandler(this.find_Click);
             // 
-            // textBox1
+            // airname
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(145, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 25);
-            this.textBox1.TabIndex = 10;
+            this.airname.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.airname.Location = new System.Drawing.Point(145, 28);
+            this.airname.Name = "airname";
+            this.airname.Size = new System.Drawing.Size(144, 25);
+            this.airname.TabIndex = 10;
             // 
             // label1
             // 
@@ -540,8 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.delm)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addm)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -578,8 +556,8 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button Delete;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button find;
+        private System.Windows.Forms.TextBox airname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button arr_sort;
         private System.Windows.Forms.Button file_save;
@@ -587,9 +565,7 @@
         private System.Windows.Forms.NumericUpDown delc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown delm;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown addm;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button6;
     }

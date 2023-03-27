@@ -353,7 +353,6 @@ namespace Lab4
             return _airports;
         }
 
-
         public int CompareTo(object o)
         {
             if (o is Airport air) return _name.CompareTo(air._name);
