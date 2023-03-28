@@ -212,5 +212,13 @@ namespace Lab4
             }
             output.Text += s;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Dictionary d = new Dictionary();
+            d.Show();
+        }
+
+
     }
 }
