@@ -1,0 +1,11 @@
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\bin\Debug\Lab6.exe.config
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\bin\Debug\Lab6.exe
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\bin\Debug\Lab6.pdb
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.csproj.AssemblyReference.cache
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.csproj.SuggestedBindingRedirects.cache
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.Properties.Resources.resources
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.csproj.GenerateResource.cache
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.csproj.CoreCompileInputs.cache
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.exe
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.pdb
+d:\Users\admin\Desktop\ПГУ\2 курс\ООП C#\OOP_labs\Lab6\obj\Debug\Lab6.Lib.resources

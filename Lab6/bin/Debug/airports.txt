@@ -1,0 +1,64 @@
+Array[0]:
+_id: 0
+_name: Домодедово
+_codeIATA: DME
+_countOfFlights: 5000
+_countOfAirplanes: 500
+_countOfEmployees: 1000
+_countOfPassengers: 30,6
+_revenue: 10,3
+
+_id: 1
+_name: Шереметьево
+_codeIATA: SVO
+_countOfFlights: 5000
+_countOfAirplanes: 500
+_countOfEmployees: 1000
+_countOfPassengers: 24
+_revenue: 12,2
+
+
+
+Array[1]:
+_id: 3
+_name: Лос-Анджелес
+_codeIATA: LAX
+_countOfFlights: 23000
+_countOfAirplanes: 600
+_countOfEmployees: 4000
+_countOfPassengers: 24,7
+_revenue: 50,8
+
+_id: 4
+_name: Атланта
+_codeIATA: ATL
+_countOfFlights: 12000
+_countOfAirplanes: 400
+_countOfEmployees: 1000
+_countOfPassengers: 40
+_revenue: 15,8
+
+_id: 2
+_name: Дубай
+_codeIATA: DXB
+_countOfFlights: 30000
+_countOfAirplanes: 800
+_countOfEmployees: 6000
+_countOfPassengers: 89,7
+_revenue: 78,8
+
+
+
+Array[2]:
+_id: 2
+_name: Дубай
+_codeIATA: DXB
+_countOfFlights: 30000
+_countOfAirplanes: 800
+_countOfEmployees: 6000
+_countOfPassengers: 89,7
+_revenue: 78,8
+
+
+
+
