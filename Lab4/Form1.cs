@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Drawing.Imaging;
-using System.Collections;
-using System.Diagnostics;
-using System.Security.Cryptography;
-using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 
 namespace Lab4
@@ -196,8 +185,8 @@ namespace Lab4
             string s = "";
             for (int i = 0; i < mas.Count(); i++)
             {
-                s = $"Collection{i+1}:" + "\r" + "\n";
-                foreach (Airport item in array[i])
+                s = $"Collection{i + 1}:" + "\r" + "\n";
+                foreach (Airport item in mas.ElementAt(i))
                 {
                     s += item.ToString() + "\r" + "\n" + "\r" + "\n";
                 }
@@ -218,7 +207,5 @@ namespace Lab4
             Dictionary d = new Dictionary();
             d.Show();
         }
-
-
     }
 }
