@@ -15,12 +15,6 @@ namespace Lab8
             Close();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            OutputElems.Clear();
-            OutputSum.Clear();
-        }
-
         private void Create_Click(object sender, EventArgs e)
         {
             int _count = (int)count.Value;
@@ -37,6 +31,7 @@ namespace Lab8
 
         async private void Print_Click(object sender, EventArgs e)
         {
+            OutputElems.Clear();
             for (int i = 0; i < _list.Count; i++)
             {
                 OutputElems.Text += await Task.Run(() =>

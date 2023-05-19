@@ -40,7 +40,6 @@
             Print = new Button();
             Time = new Button();
             Sum = new Button();
-            button5 = new Button();
             Close = new Button();
             timeLabel = new Label();
             OutputSum = new TextBox();
@@ -130,7 +129,7 @@
             count.Name = "count";
             count.Size = new Size(92, 27);
             count.TabIndex = 5;
-            count.Value = new decimal(new int[] { 15, 0, 0, 0 });
+            count.Value = new decimal(new int[] { 500, 0, 0, 0 });
             // 
             // label1
             // 
@@ -186,20 +185,6 @@
             Sum.UseVisualStyleBackColor = false;
             Sum.Click += Sum_Click;
             // 
-            // button5
-            // 
-            button5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button5.BackColor = Color.DimGray;
-            button5.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.ForeColor = Color.White;
-            button5.Location = new Point(519, 403);
-            button5.Name = "button5";
-            button5.Size = new Size(228, 28);
-            button5.TabIndex = 10;
-            button5.Text = "Очистить вывод";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
-            // 
             // Close
             // 
             Close.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -221,7 +206,6 @@
             timeLabel.Name = "timeLabel";
             timeLabel.Size = new Size(551, 32);
             timeLabel.TabIndex = 12;
-            timeLabel.Text = "label4";
             timeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // OutputSum
@@ -243,7 +227,6 @@
             Controls.Add(OutputSum);
             Controls.Add(timeLabel);
             Controls.Add(Close);
-            Controls.Add(button5);
             Controls.Add(groupBox1);
             Controls.Add(OutputElems);
             Font = new Font("Times New Roman", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -272,7 +255,6 @@
         private Button Create;
         private Button Print;
         private Button Sum;
-        private Button button5;
         private Button Close;
         private Label timeLabel;
         private Button Time;
