@@ -16,19 +16,24 @@ namespace Lab6
 
         public LibraryType Type { get; set; }
 
-        public static List<Library> All = new List<Library>();
+        private static List<Library> _all = new List<Library>();
 
-        public Library(string name, int books, double rating, LibraryType type)
+        public Library(string name, int books, double rating, string key)
         {
             Name = name;
             Books = books;
             Rating = rating;
-            Type = type;
+            Type = LibraryFabric.GetLibrary(key);
+        }
+
+        public static List<Library> GetList()
+        {
+            return _all;
         }
 
         public static void Add(Library _library)
         {
-            All.Add(_library);
+            _all.Add(_library);
         }
         public override string ToString()
         {

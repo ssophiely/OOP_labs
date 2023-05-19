@@ -8,16 +8,10 @@ namespace Lab6
 {
     public class LibraryFabric
     {
-        public Dictionary<string, LibraryType> libs = new Dictionary<string, LibraryType>();
+        private static Dictionary<string, LibraryType> libs = new Dictionary<string, LibraryType>()
+        { {"Kids", new ChildLibrary() },{"Public", new PublicLibrary() }, { "University", new UniLibrary()} };
 
-        public LibraryFabric()
-        {
-            libs.Add("Kids", new ChildLibrary());
-            libs.Add("Public", new PublicLibrary());
-            libs.Add("University", new UniLibrary());
-        }
-
-        public LibraryType GetLibrary(string key)
+        public static LibraryType GetLibrary(string key)
         {
             return libs[key];
         }

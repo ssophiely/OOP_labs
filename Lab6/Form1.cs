@@ -37,8 +37,6 @@ namespace Lab6
                 return;
             }
 
-            LibraryFabric fabric = new LibraryFabric();
-
             try
             {
                 string _name = name.Text;
@@ -47,15 +45,15 @@ namespace Lab6
 
                 if (rbchild.Checked)
                 {
-                    Library.Add(new Library(_name, _books, _rating, fabric.GetLibrary("Kids")));
+                    Library.Add(new Library(_name, _books, _rating, "Kids"));
                 }
                 else if (rbpublic.Checked)
                 {
-                    Library.Add(new Library(_name, _books, _rating, fabric.GetLibrary("Public")));
+                    Library.Add(new Library(_name, _books, _rating, "Public"));
                 }
                 else
                 {
-                    Library.Add(new Library(_name, _books, _rating, fabric.GetLibrary("University")));
+                    Library.Add(new Library(_name, _books, _rating, "University"));
                 }
             }
             catch (FormatException ex)
@@ -65,8 +63,6 @@ namespace Lab6
                 MessageBox(0, ex1.Message + ex1.GetRtype(), "Неверное преобразование", 0);
                 return;
             }
-
-
 
             foreach (Control item in create.Parent.Controls)
             {
@@ -80,7 +76,7 @@ namespace Lab6
 
         private void print_Click(object sender, EventArgs e)
         {
-            foreach (Library item in Library.All)
+            foreach (Library item in Library.GetList())
             {
                 output.Text += item.ToString() + "\r" + "\n" + "\r" + "\n";
             }
